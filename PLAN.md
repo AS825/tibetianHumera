@@ -49,7 +49,8 @@ Online kaufen mit Stripe (Karte, Apple Pay, Google Pay, EPS), Code per E-Mail un
 - [ ] Impressum und Datenschutzerklärung erstellen (DSGVO, ECG/MedienG)
 - [ ] Hinweis „keine medizinische Behandlung“ (Wellness / Energiearbeit) – wichtig für das Gewerbe
 - [ ] Instagram-Handle prüfen: Der Flyer zeigt `@tibetan_…`, der Link lautet `tibetian_…` (verwendet wird `tibetian_`)
-- [ ] Foto in höherer Auflösung und eigene Bilder vom Raum
+- [x] Hero-Foto ersetzt: „Person holding white fabric ball heat packs“ von Tima Miroshnichenko, Pexels (https://www.pexels.com/photo/6187848/), Pexels-Lizenz, kostenlos und ohne Namensnennung nutzbar
+- [ ] Eigene Fotos vom Raum und von Humera in höherer Auflösung
 - [ ] Domain wählen
 - [ ] Der Text „Über mich“ ist ein Platzhalter und sollte von Humera geschrieben werden
 

@@ -88,7 +88,7 @@ h3 { font-size: 1.02rem; }
 .lead { font-size: 1.05rem; color: var(--muted); max-width: 26ch; margin: 0 auto; }
 .hero-cta { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 1.6rem 0 2rem; }
 .hero-img { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-.hero-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; animation: drift 18s ease-in-out infinite alternate; }
+.hero-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: 35% 50%; animation: drift 18s ease-in-out infinite alternate; }
 @keyframes drift { to { transform: scale(1.08) translateY(-2%); } }
 .price-chip {
   position: absolute; left: 14px; bottom: 14px; padding: 8px 14px; border-radius: 999px;
@@ -335,7 +335,7 @@ a.voucher:hover { background: var(--sand-mist); }
   .hero > .hero-cta { grid-row: 5; }
   .hero-img { grid-column: 2; grid-row: 1 / -1; }
   .page-head .lead { max-width: 46ch; font-size: 1.1rem; }
-  .hero-img img { aspect-ratio: 4 / 5; }
+  .hero-img img { aspect-ratio: 1 / 1; object-position: 30% 50%; }
   .hero h1 { font-size: clamp(3.2rem, 5.4vw, 4.6rem); margin: .3rem 0 .8rem; white-space: nowrap; }
   .hero .lead { margin: 0; font-size: 1.2rem; max-width: 30ch; }
   .hero-cta { justify-content: flex-start; margin: 2.2rem 0 0; }
