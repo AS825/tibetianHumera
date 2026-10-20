@@ -57,11 +57,11 @@ firebase functions:secrets:set STRIPE_WEBHOOK_SECRET    # vorerst beliebiger Wer
 ```bash
 firebase deploy
 ```
-Danach ist die Seite unter `https://<projekt>.web.app` erreichbar.
+Danach ist die Seite unter `https://tibetian-c6f3d.web.app` erreichbar.
 
 ### 6. Stripe-Webhook verbinden
 1. Stripe → *Developers → Webhooks → Add endpoint*
-   - URL: `https://<projekt>.web.app/api/stripe-webhook`
+   - URL: `https://tibetian-c6f3d.web.app/api/stripe-webhook`
    - Events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`
 2. Das **Signing secret** (`whsec_…`) kopieren und hinterlegen:
    ```bash
