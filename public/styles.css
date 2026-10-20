@@ -383,3 +383,47 @@ a.voucher:hover { background: var(--sand-mist); }
   .checkout .trust { padding: 0; }
   .choice:hover { transform: translateY(-2px); }
 }
+
+/* ---------- Einblicke (Instagram) ---------- */
+.insta-lead { max-width: 46ch; margin-bottom: 1.2rem; }
+.insta-consent { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 16px; padding: 18px; margin-bottom: 16px; }
+.insta-consent > svg { flex: none; width: 30px; height: 30px; fill: none; stroke: var(--plum); stroke-width: 1.6; }
+.insta-consent > div { flex: 1 1 220px; display: grid; gap: 4px; font-size: .9rem; }
+.insta-consent .muted { font-size: .82rem; }
+.insta-consent .check { margin-top: 6px; font-size: .82rem; }
+.insta-consent .btn { flex: 1 1 100%; }
+.insta-consent[hidden] { display: none; }
+
+.insta-track {
+  display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 16px;
+  margin-inline: -16px; padding: 4px 16px 14px; scrollbar-width: thin; scrollbar-color: var(--sand-soft) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+.insta-item { flex: 0 0 min(82%, 340px); scroll-snap-align: start; }
+.insta-track.is-live .insta-item { flex-basis: min(calc(100% - 8px), 360px); min-width: 326px; }
+.insta-ph {
+  position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius); overflow: hidden;
+  background: linear-gradient(135deg, var(--sand-mist), var(--sand-soft));
+  display: grid; place-items: end start; padding: 16px;
+}
+.insta-ph::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(255, 253, 251, .55) 50%, transparent 70%);
+  transform: translateX(-100%); animation: shimmer 2.8s ease-in-out infinite;
+}
+.insta-ph::after {
+  content: ""; position: absolute; left: 50%; top: 44%; width: 64px; height: 64px; translate: -50% -50%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B2A26' stroke-opacity='.4' stroke-width='1.3'%3E%3Crect x='3' y='3' width='18' height='18' rx='5'/%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Ccircle cx='17.5' cy='6.5' r='.6' fill='%236B2A26'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.insta-ph span { position: relative; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--plum); }
+@keyframes shimmer { to { transform: translateX(100%); } }
+.instagram-media { margin: 0 !important; min-width: 0 !important; width: 100% !important; border-radius: var(--radius) !important; }
+.insta-more { margin-top: 10px; }
+
+@media (min-width: 900px) {
+  .insta-consent { flex-wrap: nowrap; padding: 20px 24px; }
+  .insta-consent .btn { flex: none; }
+  .insta-track { margin-inline: 0; padding-inline: 0; scroll-padding-inline: 0; }
+  .insta-item { flex-basis: calc((100% - 28px) / 3); }
+  .insta-track.is-live .insta-item { flex-basis: calc((100% - 28px) / 3); min-width: 326px; }
+}

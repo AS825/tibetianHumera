@@ -14,14 +14,16 @@ const topbar = document.querySelector('.topbar');
 const tabs = [...document.querySelectorAll('.tabbar a[href^="#"]')];
 const topLinks = [...document.querySelectorAll('.topnav a[href^="#"]')];
 const sections = tabs.map((t) => document.querySelector(t.getAttribute('href')));
+const topSections = topLinks.map((a) => document.querySelector(a.getAttribute('href')));
 const onScroll = () => {
   topbar.classList.toggle('scrolled', scrollY > 8);
   if (!tabs.length) return;
   let current = 0;
   sections.forEach((s, i) => { if (s.getBoundingClientRect().top < innerHeight * 0.4) current = i; });
   tabs.forEach((t, i) => t.classList.toggle('active', i === current));
-  const hash = tabs[current].getAttribute('href');
-  topLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === hash && current > 0));
+  let top = -1;
+  topSections.forEach((sec, i) => { if (sec && sec.getBoundingClientRect().top < innerHeight * 0.4) top = i; });
+  topLinks.forEach((a, i) => a.classList.toggle('active', i === top));
 };
 addEventListener('scroll', onScroll, { passive: true });
 onScroll();
