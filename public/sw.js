@@ -1,7 +1,7 @@
 // Offline-Cache: Seiten zuerst aus dem Netz (damit Änderungen sofort sichtbar sind), Dateien aus dem Cache.
-const CACHE = 'balance-zeit-v7';
+const CACHE = 'balance-zeit-v8';
 const ASSETS = [
-  '/', '/gutschein', '/styles.css', '/app.js', '/gallery.js', '/manifest.webmanifest',
+  '/', '/gutschein', '/styles.css', '/app.js', '/gallery.js', '/arts.js', '/manifest.webmanifest',
   '/img/humera-namaste.webp', '/img/kraeuterstempel-massage-900.webp', '/icons/icon-192.png',
 ];
 

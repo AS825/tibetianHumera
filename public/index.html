@@ -72,28 +72,140 @@
       <p class="quote reveal">Hier dürfen Sie ankommen.</p>
     </section>
 
-    <!-- ANGEBOT -->
+    <!-- ANGEBOT: Leistung, Ablauf, Fragen -->
     <section class="section" id="angebot">
       <p class="eyebrow reveal">Das Angebot</p>
-      <h2 class="reveal">Was Sie erwartet</h2>
-      <ol class="steps">
-        <li class="card reveal"><span class="num">1</span><div><h3>Ankommen &amp; Gespräch</h3><p>Wir bestimmen gemeinsam Ihren Energietyp.</p></div></li>
-        <li class="card reveal"><span class="num">2</span><div><h3>Massage</h3><p>Mit heißen Kräuterstempeln – oder Schröpfen und Massage.</p></div></li>
-        <li class="card reveal"><span class="num">3</span><div><h3>Nachklingen</h3><p>Ausgewählte Kräutertees und Impulse für Alltag, Essen und Schlaf.</p></div></li>
+      <h2 class="reveal">Balance-Zeit</h2>
+      <p class="muted reveal section-lead">Eine tibetische Ku-Nye-Massage: <em>Ku</em> bedeutet Einölen, <em>Nye</em> Massieren. Warmes Öl, ruhige Griffe und viel Zeit bringen Körper und Geist wieder ins Gleichgewicht.</p>
+
+      <div class="arts">
+        <article class="art reveal">
+          <div class="art__img"><img src="/img/art-ku-nye.webp" alt="Hände massieren mit warmem Öl den Rücken einer liegenden Frau" width="800" height="533" loading="lazy"></div>
+          <div class="art__body">
+            <h3>Ku Nye</h3>
+            <p>Warmes Öl, sanfter Druck und fließende Griffe lösen Verspannungen und beruhigen Körper und Geist.</p>
+            <button class="art__more" type="button" data-art="ku-nye">mehr lesen</button>
+          </div>
+          <template id="art-ku-nye">
+            <p class="eyebrow">Die tibetische Ölmassage</p>
+            <h3>Ku Nye</h3>
+            <p>Ku Nye ist ein Teil der traditionellen tibetischen Medizin. <em>Ku</em> heißt Einölen, <em>Nye</em> heißt Massieren.</p><p>Zuerst trage ich warmes Öl auf, abgestimmt auf Ihren Energietyp. Danach massiere ich Muskeln und Energiepunkte mit Druck, Kneten und langen, ausstreichenden Griffen.</p>
+            <dl class="art__facts"><dt>So fühlt es sich an</dt><dd>Warm, ruhig und tief entspannend – viele Kundinnen schlafen kurz ein.</dd><dt>Schön, wenn …</dt><dd>Sie gestresst sind, schlecht abschalten können oder sich im Nacken und Rücken fest fühlen.</dd></dl>
+          </template>
+        </article>
+        <article class="art art--featured reveal">
+          <div class="art__img"><img src="/img/art-kraeuterstempel.webp" alt="Zwei Hände drücken warme Kräuterstempel auf den Rücken" width="800" height="533" loading="lazy"></div>
+          <div class="art__body">
+            <h3>Heiße Kräuterstempel</h3>
+            <p>In Leinen gebundene Kräuter werden erwärmt und rhythmisch auf den Körper getupft. Wärme und Duft lösen tief sitzende Spannung.</p>
+            <button class="art__more" type="button" data-art="kraeuterstempel">mehr lesen</button>
+          </div>
+          <template id="art-kraeuterstempel">
+            <p class="eyebrow">Wärme, die tief geht</p>
+            <h3>Heiße Kräuterstempel</h3>
+            <p>Die Stempel sind kleine Leinensäckchen, gefüllt mit ausgewählten Kräutern. Ich erwärme sie und tupfe sie über Rücken, Schultern und Beine – zuerst kurz, dann länger, damit Sie sich an die Wärme gewöhnen.</p><p>Die Kräuterstempel verbinde ich mit der Ku-Nye-Ölmassage. Sie sind Teil der Balance-Zeit.</p>
+            <dl class="art__facts"><dt>So fühlt es sich an</dt><dd>Angenehm heiß, nie unangenehm. Der Duft der Kräuter begleitet Sie durch die ganze Behandlung.</dd><dt>Schön, wenn …</dt><dd>Sie leicht frieren, Wärme mögen oder innerlich zur Ruhe kommen möchten.</dd></dl>
+          </template>
+        </article>
+        <article class="art reveal">
+          <div class="art__img"><img src="/img/art-schroepfen.webp" alt="Gläser beim Schröpfen auf dem Rücken" width="800" height="533" loading="lazy"></div>
+          <div class="art__body">
+            <h3>Schröpfen</h3>
+            <p>Schröpfgläser erzeugen einen sanften Unterdruck auf der Haut. Das lockert festes Gewebe und regt die Durchblutung an.</p>
+            <button class="art__more" type="button" data-art="schroepfen">mehr lesen</button>
+          </div>
+          <template id="art-schroepfen">
+            <p class="eyebrow">Lösen, was festsitzt</p>
+            <h3>Schröpfen</h3>
+            <p>Ich setze die Gläser vor allem auf Rücken, Nacken und Schultern. Der Unterdruck hebt die Haut leicht an. Manchmal bleiben die Gläser stehen, manchmal gleiten sie mit Öl über die Haut.</p><p>Danach können für einige Tage runde, rötliche Abdrücke sichtbar sein. Das ist normal und vergeht von selbst. Schröpfen kombiniere ich mit der Ku-Nye-Massage.</p>
+            <dl class="art__facts"><dt>So fühlt es sich an</dt><dd>Ein kurzes, kräftiges Ziehen – danach ein warmes, gelöstes Gefühl.</dd><dt>Schön, wenn …</dt><dd>Sie sehr verspannte Schultern oder einen festen Nacken haben. Wenn Sie blutverdünnende Medikamente nehmen, sprechen Sie mich bitte vorher an.</dd></dl>
+          </template>
+        </article>
+      </div>
+
+      <dialog class="sheet" id="artSheet" aria-labelledby="sheetTitle">
+        <div class="sheet__grip" aria-hidden="true"></div>
+        <button class="sheet__close" type="button" aria-label="Schließen">×</button>
+        <div class="sheet__img"><img alt="" id="sheetImg"></div>
+        <div class="sheet__content" id="sheetContent"></div>
+        <div class="sheet__cta">
+          <a class="btn btn--primary" href="https://ig.me/m/tibetian_energybalancemassage" target="_blank" rel="noopener">Termin anfragen</a>
+        </div>
+      </dialog>
+
+      <h3 class="sub-head reveal">Ihr Paket: Balance-Zeit</h3>
+      <article class="service card reveal">
+        <figure class="service__img">
+          <img src="/img/raum-kraeuterstempel.webp" alt="Kräuterstempel in einer Schale auf der Massageliege" width="400" height="533" loading="lazy">
+          <figcaption class="price-chip">ca. 90 Min · 85 €</figcaption>
+        </figure>
+        <div class="service__body">
+          <div class="seg" role="radiogroup" aria-label="Variante wählen">
+            <input type="radio" name="variante" id="v-kraeuter" checked>
+            <label for="v-kraeuter">Kräuterstempel</label>
+            <input type="radio" name="variante" id="v-schroepfen">
+            <label for="v-schroepfen">Schröpfen</label>
+            <span class="seg__thumb" aria-hidden="true"></span>
+          </div>
+          <div class="variant variant--kraeuter">
+            <h3>Massage mit heißen Kräuterstempeln</h3>
+            <p>Leinensäckchen, gefüllt mit Kräutern, werden erwärmt und rhythmisch auf den Körper getupft und ausgestrichen. Die Wärme dringt tief ein, der Duft der Kräuter beruhigt. Besonders schön, wenn Sie Wärme mögen und innerlich zur Ruhe kommen möchten.</p>
+          </div>
+          <div class="variant variant--schroepfen">
+            <h3>Schröpfen und Massage</h3>
+            <p>Schröpfgläser erzeugen einen sanften Unterdruck auf der Haut. Das lockert festes Gewebe, etwa in Nacken und Schultern, und wird mit der Ku-Nye-Massage verbunden. Danach können für einige Tage runde, rötliche Abdrücke sichtbar sein – das ist normal und vergeht von selbst.</p>
+          </div>
+          <ul class="included">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Gespräch und Bestimmung Ihres Energietyps</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Massage mit warmem Öl – mit Kräuterstempeln oder Schröpfen</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Ausgewählter Kräutertee zum Nachklingen</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Impulse für Alltag, Essen und Schlaf zum Mitnehmen</li>
+          </ul>
+          <div class="service__foot">
+            <p class="service__price"><strong>85 €</strong><span>ca. 90 Minuten, alles inklusive</span></p>
+            <div class="service__cta">
+              <a class="btn btn--primary" href="https://ig.me/m/tibetian_energybalancemassage" target="_blank" rel="noopener">Termin anfragen</a>
+              <a class="btn btn--ghost" href="/gutschein"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v12H4zM2 8h20v4H2zM12 8v12M12 8c-2-4-6-4-6-1s4 1 6 1c2 0 6 2 6-1s-4-3-6 1"/></svg>Als Gutschein schenken</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <h3 class="sub-head reveal" id="ablauf">So läuft Ihre Balance-Zeit ab</h3>
+      <ol class="timeline">
+        <li class="reveal"><span class="timeline__time">ca. 10 Min</span><h4>Ankommen</h4><p>Sie werden herzlich empfangen und dürfen in Ruhe ankommen. Hier gibt es keinen Zeitdruck.</p></li>
+        <li class="reveal"><span class="timeline__time">ca. 15 Min</span><h4>Gespräch &amp; Energietyp</h4><p>Wir sprechen darüber, wie es Ihnen geht: Schlaf, Stress, Verspannungen. Dann bestimmen wir Ihren Energietyp nach der tibetischen Lehre (Wind, Galle oder Schleim). Darauf stimme ich Öl, Kräuter und Griffe ab.</p></li>
+        <li class="reveal"><span class="timeline__time">ca. 50 Min</span><h4>Massage</h4><p>Sie liegen auf einer warmen Liege und bleiben mit Handtüchern zugedeckt. Mit warmem Öl und Kräuterstempeln oder Schröpfgläsern massiere ich Rücken, Nacken, Schultern und Beine. Sie dürfen einfach loslassen – reden müssen Sie nicht.</p></li>
+        <li class="reveal"><span class="timeline__time">ca. 15 Min</span><h4>Nachklingen</h4><p>Bei einem ausgewählten Kräutertee ruhen Sie nach. Dazu bekommen Sie Impulse für Alltag, Essen und Schlaf mit nach Hause.</p></li>
       </ol>
 
-      <div class="offer card reveal">
-        <div>
-          <h3>Balance-Zeit</h3>
-          <p class="muted">ca. 90 Minuten</p>
-        </div>
-        <p class="price">85 €</p>
+      <h3 class="sub-head reveal">Gut zu wissen</h3>
+      <div class="faq reveal">
+        <details>
+          <summary>Was soll ich anziehen und mitbringen?</summary>
+          <p>Bequeme Kleidung genügt. Für die Massage machen Sie sich so weit frei, wie es für Sie angenehm ist – Sie bleiben dabei zugedeckt. Bitte essen Sie 1–2 Stunden vorher nichts Schweres.</p>
+        </details>
+        <details>
+          <summary>Ist die Massage für mich geeignet?</summary>
+          <p>Die Balance-Zeit dient Ihrem Wohlbefinden und ersetzt keine ärztliche Behandlung. Bei Schwangerschaft, Fieber, akuten Entzündungen, frischen Verletzungen, Hauterkrankungen oder wenn Sie blutverdünnende Medikamente nehmen, sprechen Sie mich bitte vorher an.</p>
+        </details>
+        <details>
+          <summary>Wie buche ich einen Termin?</summary>
+          <p>Schreiben Sie mir einfach eine Direktnachricht auf Instagram. Ich melde mich mit einem Terminvorschlag.</p>
+        </details>
+        <details>
+          <summary>Was, wenn ich absagen muss?</summary>
+          <p>Bitte sagen Sie mindestens 24 Stunden vorher ab, dann kann ich den Termin weitergeben.</p>
+        </details>
+        <details>
+          <summary>Wie bezahle ich?</summary>
+          <p>Sie bezahlen nach der Behandlung vor Ort – oder Sie lösen Ihren Gutschein ein.</p>
+        </details>
+        <details>
+          <summary>Was mache ich nach der Massage?</summary>
+          <p>Trinken Sie viel Wasser und gönnen Sie sich den Rest des Tages etwas Ruhe. Das Öl darf noch einwirken, Sie müssen es nicht gleich abduschen.</p>
+        </details>
       </div>
-      <a class="voucher reveal" href="/gutschein">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v12H4zM2 8h20v4H2zM12 8v12M12 8c-2-4-6-4-6-1s4 1 6 1c2 0 6 2 6-1s-4-3-6 1"/></svg>
-        <p><strong>Auch als Gutschein.</strong><br>Schenken Sie Balance-Zeit – jetzt online kaufen.</p>
-        <span class="voucher__arrow" aria-hidden="true">→</span>
-      </a>
     </section>
 
     <!-- ATEM-PAUSE (kleines Erlebnis) -->
@@ -178,5 +290,6 @@
 
   <script src="/app.js" defer></script>
   <script src="/gallery.js" defer></script>
+  <script src="/arts.js" defer></script>
 </body>
 </html>
