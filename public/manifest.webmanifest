@@ -1,0 +1,16 @@
+{
+  "name": "Tibetan Energy Balance Massage",
+  "short_name": "Balance-Zeit",
+  "description": "Tibetische Ku-Nye-Massage mit heißen Kräuterstempeln · Humera Shah · 1220 Wien",
+  "lang": "de",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFFDFB",
+  "theme_color": "#FFF9F1",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
