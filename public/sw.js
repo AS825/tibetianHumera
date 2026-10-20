@@ -1,7 +1,7 @@
-// Einfacher Offline-Cache: App-Shell zuerst aus dem Cache, dann im Hintergrund aktualisieren
-const CACHE = 'balance-zeit-v1';
+// Offline-Cache: Seiten zuerst aus dem Netz (damit Änderungen sofort sichtbar sind), Dateien aus dem Cache.
+const CACHE = 'balance-zeit-v2';
 const ASSETS = [
-  '/', '/index.html', '/styles.css', '/app.js', '/manifest.webmanifest',
+  '/', '/gutschein', '/styles.css', '/app.js', '/manifest.webmanifest',
   '/img/humera.webp', '/img/kraeuterstempel.webp', '/icons/icon-192.png',
 ];
 
@@ -16,11 +16,27 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  if (e.request.method !== 'GET') return;
+  const url = new URL(e.request.url);
+  // Zahlungen, API, Firebase-SDK und Admin nie cachen
+  if (e.request.method !== 'GET' || url.origin !== location.origin
+    || url.pathname.startsWith('/api/') || url.pathname.startsWith('/__/')
+    || url.pathname.startsWith('/admin') || url.pathname.startsWith('/gutschein-danke')) return;
+
+  if (e.request.mode === 'navigate') {
+    e.respondWith(
+      fetch(e.request).then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE).then((c) => c.put(e.request, copy));
+        return res;
+      }).catch(() => caches.match(e.request).then((r) => r || caches.match('/')))
+    );
+    return;
+  }
+
   e.respondWith(
     caches.match(e.request).then((cached) => {
       const network = fetch(e.request).then((res) => {
-        if (res.ok && new URL(e.request.url).origin === location.origin) {
+        if (res.ok) {
           const copy = res.clone();
           caches.open(CACHE).then((c) => c.put(e.request, copy));
         }

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Danke · Ihr Gutschein · Balance-Zeit</title>
+  <meta name="description" content="Ihr Gutschein für Balance-Zeit.">
+  <meta name="theme-color" content="#FFF9F1">
+  <meta name="robots" content="noindex">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute">
+    <symbol id="lotus" viewBox="0 0 120 80">
+      <path d="M60 4c9 10 13 22 13 32S68 56 60 64c-8-8-13-18-13-28S51 14 60 4z"/>
+      <path d="M17 18c14 2 26 10 33 26-7 3-16 2-24-4-6-5-9-13-9-22z"/>
+      <path d="M103 18c-14 2-26 10-33 26 7 3 16 2 24-4 6-5 9-13 9-22z"/>
+      <path d="M2 64c12-10 30-14 52-4-12 12-30 14-52 4z"/>
+      <path d="M118 64c-12-10-30-14-52-4 12 12 30 14 52 4z"/>
+    </symbol>
+  </svg>
+
+  <header class="topbar">
+    <a href="/" class="brand">
+      <svg class="lotus lotus--sm" viewBox="0 0 120 80"><use href="#lotus"/></svg>
+      <span>Tibetan<br><small>Energy Balance Massage</small></span>
+    </a>
+  </header>
+
+  <main>
+    <div class="page-head">
+      <p class="eyebrow">Vielen Dank</p>
+      <h1>Ihr Gutschein ist da</h1>
+      <p class="lead" id="lead">Einen Moment, wir bestätigen Ihre Zahlung …</p>
+    </div>
+    <section class="section" style="padding-top:24px">
+      <div class="gift" id="gift" aria-busy="true">
+        <svg class="lotus" viewBox="0 0 120 80"><use href="#lotus"/></svg>
+        <p class="gift__label">Gutschein</p>
+        <p class="gift__title" id="gTitle">…</p>
+        <p class="gift__amount" id="gAmount">&nbsp;</p>
+        <p class="gift__for" id="gFor"></p>
+        <p class="gift__msg" id="gMsg"></p>
+        <div class="gift__code"><div>Code<strong id="gCode">BZ-····-····</strong></div><span>Humera Shah<br>1220 Wien</span></div>
+      </div>
+      <p class="error" id="err" role="alert" hidden></p>
+      <div class="no-print" id="actions" hidden style="display:grid;gap:10px;margin-top:18px">
+        <button class="btn btn--primary" id="printBtn" type="button">Drucken oder als PDF speichern</button>
+        <button class="btn btn--ghost" id="copyBtn" type="button">Code kopieren</button>
+      </div>
+      <p class="muted no-print" style="margin-top:18px">Eine Kopie haben wir an Ihre E-Mail-Adresse gesendet. Zum Einlösen einfach einen Termin per Direktnachricht vereinbaren und den Code mitbringen.</p>
+    </section>
+    <footer class="footer">
+      <p>© <span id="year"></span> Humera Shah · <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a> · <a href="/agb">AGB</a></p>
+    </footer>
+  </main>
+
+  <nav class="tabbar" aria-label="Hauptnavigation">
+    <a href="/"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9h-6v-6H9v6H3z"/></svg>Start</a>
+    <a href="/#angebot"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 4 7 4 9a4 4 0 0 1-8 0c0-2 1-5 4-9zM5 20h14"/></svg>Angebot</a>
+    <a href="/gutschein" class="active" aria-current="page"><svg viewBox="0 0 24 24"><path d="M4 8h16v12H4zM2 8h20v4H2zM12 8v12M12 8c-2-4-6-4-6-1s4 1 6 1c2 0 6 2 6-1s-4-3-6 1"/></svg>Gutschein</a>
+    <a href="/#ueber"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>Über mich</a>
+    <a href="/#kontakt"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4.5A8 8 0 1 1 21 12z"/></svg>Kontakt</a>
+  </nav>
+
+  <script src="/app.js" defer></script>
+  <script>
+    (async () => {
+      const $ = (id) => document.getElementById(id);
+      const id = new URLSearchParams(location.search).get('session_id');
+      const fmt = (c) => new Intl.NumberFormat('de-AT', { style: 'currency', currency: 'EUR' }).format(c / 100);
+      const fail = (msg) => { $('lead').textContent = ''; $('err').textContent = msg; $('err').hidden = false; };
+      if (!id) return fail('Dieser Link ist unvollständig. Den Gutschein finden Sie auch in Ihrer E-Mail.');
+      for (let i = 0; i < 10; i++) {
+        const res = await fetch('/api/voucher?session_id=' + encodeURIComponent(id)).catch(() => null);
+        if (res && res.ok && res.status !== 202) {
+          const v = await res.json();
+          $('lead').textContent = 'Die Zahlung ist bestätigt. Viel Freude beim Verschenken!';
+          $('gTitle').textContent = v.title;
+          $('gAmount').textContent = fmt(v.amountCents);
+          $('gCode').textContent = v.code;
+          if (v.recipientName) { $('gFor').textContent = 'Für: '; $('gFor').append(Object.assign(document.createElement('strong'), { textContent: v.recipientName })); }
+          if (v.message) $('gMsg').textContent = '„' + v.message + '“';
+          $('gift').removeAttribute('aria-busy');
+          $('actions').hidden = false;
+          $('printBtn').onclick = () => print();
+          $('copyBtn').onclick = async () => {
+            try { await navigator.clipboard.writeText(v.code); $('copyBtn').textContent = 'Kopiert ✓'; } catch { getSelection().selectAllChildren($('gCode')); }
+          };
+          return;
+        }
+        if (res && res.status !== 202 && res.status < 500) return fail('Wir konnten den Gutschein nicht finden. Bitte melden Sie sich per Direktnachricht.');
+        await new Promise((r) => setTimeout(r, 2000));
+      }
+      fail('Die Bestätigung dauert länger als üblich. Sie erhalten den Gutschein per E-Mail, sobald die Zahlung eingegangen ist.');
+    })();
+  </script>
+</body>
+</html>

@@ -9,12 +9,13 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
   io.observe(el);
 });
 
-// Topbar-Schatten + aktiver Tab
+// Topbar-Schatten + aktiver Tab (nur auf der Startseite)
 const topbar = document.querySelector('.topbar');
-const tabs = [...document.querySelectorAll('.tabbar a')];
+const tabs = [...document.querySelectorAll('.tabbar a[href^="#"]')];
 const sections = tabs.map((t) => document.querySelector(t.getAttribute('href')));
 const onScroll = () => {
   topbar.classList.toggle('scrolled', scrollY > 8);
+  if (!tabs.length) return;
   let current = 0;
   sections.forEach((s, i) => { if (s.getBoundingClientRect().top < innerHeight * 0.4) current = i; });
   tabs.forEach((t, i) => t.classList.toggle('active', i === current));
@@ -26,7 +27,7 @@ onScroll();
 const breathe = document.getElementById('breathe');
 const label = document.getElementById('breatheLabel');
 let breathTimer = null;
-breathe.addEventListener('click', () => {
+breathe?.addEventListener('click', () => {
   if (breathTimer) {
     clearInterval(breathTimer); breathTimer = null;
     breathe.classList.remove('in'); label.textContent = 'Tippen';
@@ -49,9 +50,9 @@ breathe.addEventListener('click', () => {
 let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
 addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault(); deferredPrompt = e; installBtn.hidden = false;
+  e.preventDefault(); deferredPrompt = e; if (installBtn) installBtn.hidden = false;
 });
-installBtn.addEventListener('click', async () => {
+installBtn?.addEventListener('click', async () => {
   if (!deferredPrompt) return;
   deferredPrompt.prompt();
   await deferredPrompt.userChoice;
@@ -62,4 +63,5 @@ if ('serviceWorker' in navigator) {
   addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
 }
 
-document.getElementById('year').textContent = new Date().getFullYear();
+const year = document.getElementById('year');
+if (year) year.textContent = new Date().getFullYear();

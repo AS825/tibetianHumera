@@ -35,9 +35,11 @@ firebase deploy --only hosting
 - Eigene Domain verbinden (z. B. `balance-zeit.at`) unter Firebase Console → Hosting → „Benutzerdefinierte Domain“; SSL ist automatisch dabei
 - Optional: GitHub Action für automatisches Deployment bei jedem Push auf `main` (`firebase init hosting:github`)
 
+## Phase 2b – Gutscheinverkauf ✅ umgesetzt
+Online kaufen mit Stripe (Karte, Apple Pay, Google Pay, EPS), Code per E-Mail und auf der Danke-Seite, Einlösen vor Ort unter `/admin`. Einrichtung siehe [DEPLOY.md](DEPLOY.md).
+
 ## Phase 3 – Ausbau (optional)
 - **Terminanfrage-Formular** → Firestore + E-Mail-Benachrichtigung (Cloud Function oder Erweiterung „Trigger Email“)
-- **Gutschein-Anfrage** (später ggf. mit Bezahlung über Stripe)
 - **Erweiterung zum Energietyp**: kurzes Quiz mit drei Fragen als Einstieg
 - Instagram-Beiträge oder Kundenstimmen einbinden
 - Analytics ohne Cookie-Banner (z. B. Plausible) oder Firebase Analytics mit Einwilligung
