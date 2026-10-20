@@ -66,6 +66,12 @@ installBtn?.addEventListener('click', async () => {
 
 if ('serviceWorker' in navigator) {
   addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+  // Übernimmt eine neue Version der App die Seite, einmal neu laden, damit alles zusammenpasst
+  const hadController = !!navigator.serviceWorker.controller;
+  let reloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (hadController && !reloaded) { reloaded = true; location.reload(); }
+  });
 }
 
 const year = document.getElementById('year');
