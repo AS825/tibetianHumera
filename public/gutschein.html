@@ -30,6 +30,13 @@
       <svg class="lotus lotus--sm" viewBox="0 0 120 80"><use href="#lotus"/></svg>
       <span>Tibetan<br><small>Energy Balance Massage</small></span>
     </a>
+    <nav class="topnav" aria-label="Hauptnavigation Desktop">
+      <a href="/#angebot">Angebot</a>
+      <a href="/gutschein" class="active" aria-current="page">Gutschein</a>
+      <a href="/#ueber">Über mich</a>
+      <a href="/#kontakt">Kontakt</a>
+    </nav>
+    <a class="btn btn--ghost btn--sm" href="https://ig.me/m/tibetian_energybalancemassage" target="_blank" rel="noopener">Termin</a>
   </header>
 
   <main>
@@ -40,85 +47,89 @@
       <p class="lead reveal">Sie erhalten den Gutschein sofort per E-Mail. Eingelöst wird er vor Ort in 1220 Wien.</p>
     </div>
 
-    <form class="form" id="voucherForm" novalidate>
-      <!-- Live-Vorschau -->
-      <div class="gift reveal" aria-live="polite">
-        <svg class="lotus" viewBox="0 0 120 80"><use href="#lotus"/></svg>
-        <p class="gift__label">Gutschein</p>
-        <p class="gift__title" id="pvTitle">Balance-Zeit · ca. 90 Minuten</p>
-        <p class="gift__amount" id="pvAmount">85,00 €</p>
-        <p class="gift__for" id="pvFor">Für: <strong>Sie</strong></p>
-        <p class="gift__msg" id="pvMsg"></p>
-        <div class="gift__code"><div>Code<strong>BZ-····-····</strong></div><span>1220 Wien</span></div>
-      </div>
-
-      <fieldset class="fieldset">
-        <legend><span class="num">1</span>Gutschein wählen</legend>
-        <label class="choice card">
-          <input type="radio" name="product" value="balance" checked>
-          <span class="choice__dot"></span>
-          <span><strong style="font-weight:500">Balance-Zeit</strong><br><span class="muted">Massage mit Kräuterstempeln, ca. 90 Min</span></span>
-          <span class="choice__price">85 €</span>
-        </label>
-        <label class="choice card">
-          <input type="radio" name="product" value="wert">
-          <span class="choice__dot"></span>
-          <span><strong style="font-weight:500">Wertgutschein</strong><br><span class="muted">Betrag frei wählbar</span></span>
-          <span class="choice__price">ab 20 €</span>
-        </label>
-        <div class="collapse" id="amountBox">
-          <div>
-            <div class="amounts" role="group" aria-label="Betrag">
-              <button type="button" class="chip" data-amount="50">50 €</button>
-              <button type="button" class="chip" data-amount="100" aria-pressed="true">100 €</button>
-              <button type="button" class="chip" data-amount="150">150 €</button>
-              <button type="button" class="chip" data-amount="200">200 €</button>
-            </div>
-            <div class="field">
-              <label for="amountEuro">Eigener Betrag in €</label>
-              <input id="amountEuro" name="amountEuro" type="number" inputmode="numeric" min="20" max="500" step="5" value="100">
-              <span class="hint">20 bis 500 €, in 5-€-Schritten</span>
+    <form class="form checkout" id="voucherForm" novalidate>
+      <div class="checkout__fields">
+        <fieldset class="fieldset">
+          <legend><span class="num">1</span>Gutschein wählen</legend>
+          <label class="choice card">
+            <input type="radio" name="product" value="balance" checked>
+            <span class="choice__dot"></span>
+            <span><strong style="font-weight:500">Balance-Zeit</strong><br><span class="muted">Massage mit Kräuterstempeln, ca. 90 Min</span></span>
+            <span class="choice__price">85 €</span>
+          </label>
+          <label class="choice card">
+            <input type="radio" name="product" value="wert">
+            <span class="choice__dot"></span>
+            <span><strong style="font-weight:500">Wertgutschein</strong><br><span class="muted">Betrag frei wählbar</span></span>
+            <span class="choice__price">ab 20 €</span>
+          </label>
+          <div class="collapse" id="amountBox">
+            <div>
+              <div class="amounts" role="group" aria-label="Betrag">
+                <button type="button" class="chip" data-amount="50">50 €</button>
+                <button type="button" class="chip" data-amount="100" aria-pressed="true">100 €</button>
+                <button type="button" class="chip" data-amount="150">150 €</button>
+                <button type="button" class="chip" data-amount="200">200 €</button>
+              </div>
+              <div class="field">
+                <label for="amountEuro">Eigener Betrag in €</label>
+                <input id="amountEuro" name="amountEuro" type="number" inputmode="numeric" min="20" max="500" step="5" value="100">
+                <span class="hint">20 bis 500 €, in 5-€-Schritten</span>
+              </div>
             </div>
           </div>
-        </div>
-      </fieldset>
+        </fieldset>
 
-      <fieldset class="fieldset">
-        <legend><span class="num">2</span>Für wen?</legend>
-        <div class="field">
-          <label for="recipientName">Name der beschenkten Person (optional)</label>
-          <input id="recipientName" name="recipientName" maxlength="80" autocomplete="off" placeholder="z. B. Maria">
-        </div>
-        <div class="field">
-          <label for="message">Persönliche Nachricht (optional)</label>
-          <textarea id="message" name="message" maxlength="300" placeholder="Zeit nur für dich …"></textarea>
-          <span class="hint"><span id="msgCount">0</span>/300</span>
-        </div>
-      </fieldset>
+        <fieldset class="fieldset">
+          <legend><span class="num">2</span>Für wen?</legend>
+          <div class="field">
+            <label for="recipientName">Name der beschenkten Person (optional)</label>
+            <input id="recipientName" name="recipientName" maxlength="80" autocomplete="off" placeholder="z. B. Maria">
+          </div>
+          <div class="field">
+            <label for="message">Persönliche Nachricht (optional)</label>
+            <textarea id="message" name="message" maxlength="300" placeholder="Zeit nur für dich …"></textarea>
+            <span class="hint"><span id="msgCount">0</span>/300</span>
+          </div>
+        </fieldset>
 
-      <fieldset class="fieldset">
-        <legend><span class="num">3</span>Ihre Daten</legend>
-        <div class="field">
-          <label for="buyerName">Ihr Name</label>
-          <input id="buyerName" name="buyerName" maxlength="80" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="buyerEmail">E-Mail – hierhin senden wir den Gutschein</label>
-          <input id="buyerEmail" name="buyerEmail" type="email" maxlength="120" autocomplete="email" inputmode="email" required>
-        </div>
-        <label class="check">
-          <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
-          <span>Ich habe die <a href="/agb" target="_blank">AGB</a> und die <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> gelesen.</span>
-        </label>
-      </fieldset>
+        <fieldset class="fieldset">
+          <legend><span class="num">3</span>Ihre Daten</legend>
+          <div class="field">
+            <label for="buyerName">Ihr Name</label>
+            <input id="buyerName" name="buyerName" maxlength="80" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="buyerEmail">E-Mail – hierhin senden wir den Gutschein</label>
+            <input id="buyerEmail" name="buyerEmail" type="email" maxlength="120" autocomplete="email" inputmode="email" required>
+          </div>
+          <label class="check">
+            <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+            <span>Ich habe die <a href="/agb" target="_blank">AGB</a> und die <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> gelesen.</span>
+          </label>
+        </fieldset>
 
-      <p class="error" id="formError" role="alert" hidden></p>
+        <p class="error" id="formError" role="alert" hidden></p>
+      </div>
+      <aside class="checkout__side">
+        <!-- Live-Vorschau -->
+        <div class="gift reveal" aria-live="polite">
+          <svg class="lotus" viewBox="0 0 120 80"><use href="#lotus"/></svg>
+          <p class="gift__label">Gutschein</p>
+          <p class="gift__title" id="pvTitle">Balance-Zeit · ca. 90 Minuten</p>
+          <p class="gift__amount" id="pvAmount">85,00 €</p>
+          <p class="gift__for" id="pvFor">Für: <strong>Sie</strong></p>
+          <p class="gift__msg" id="pvMsg"></p>
+          <div class="gift__code"><div>Code<strong>BZ-····-····</strong></div><span>1220 Wien</span></div>
+        </div>
+
+        <div class="paybar">
+          <button class="btn btn--primary" id="payBtn" type="submit">Weiter zur Zahlung · <span id="payAmount">85 €</span></button>
+        </div>
+        <p class="trust"><span>🔒 Sichere Zahlung über Stripe</span><span>Karte · Apple Pay · Google Pay · EPS</span></p>
+      </aside>
     </form>
 
-    <div class="paybar">
-      <button class="btn btn--primary" id="payBtn" form="voucherForm" type="submit">Weiter zur Zahlung · <span id="payAmount">85 €</span></button>
-    </div>
-    <p class="trust"><span>🔒 Sichere Zahlung über Stripe</span><span>Karte · Apple Pay · Google Pay · EPS</span></p>
 
     <footer class="footer">
       <p>© <span id="year"></span> Humera Shah · <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a> · <a href="/agb">AGB</a></p>

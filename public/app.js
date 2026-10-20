@@ -12,6 +12,7 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
 // Topbar-Schatten + aktiver Tab (nur auf der Startseite)
 const topbar = document.querySelector('.topbar');
 const tabs = [...document.querySelectorAll('.tabbar a[href^="#"]')];
+const topLinks = [...document.querySelectorAll('.topnav a[href^="#"]')];
 const sections = tabs.map((t) => document.querySelector(t.getAttribute('href')));
 const onScroll = () => {
   topbar.classList.toggle('scrolled', scrollY > 8);
@@ -19,6 +20,8 @@ const onScroll = () => {
   let current = 0;
   sections.forEach((s, i) => { if (s.getBoundingClientRect().top < innerHeight * 0.4) current = i; });
   tabs.forEach((t, i) => t.classList.toggle('active', i === current));
+  const hash = tabs[current].getAttribute('href');
+  topLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === hash && current > 0));
 };
 addEventListener('scroll', onScroll, { passive: true });
 onScroll();
