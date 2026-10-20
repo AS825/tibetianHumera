@@ -110,7 +110,7 @@
     <section class="section" id="ueber">
       <p class="eyebrow reveal">Über mich</p>
       <div class="about">
-        <img class="about__img reveal" src="/img/humera.webp" alt="Humera Shah lächelnd mit gefalteten Händen" width="480" height="640" loading="lazy">
+        <img class="about__img reveal" src="/img/humera-namaste.webp" alt="Humera Shah lächelnd mit gefalteten Händen" width="480" height="640" loading="lazy">
         <div class="reveal">
           <h2>Humera Shah</h2>
           <p>Ich begleite Frauen, die ihrer Ruhe dauerhaft Raum geben wollen – mit tibetischer Energiebalance-Massage und viel Zeit.</p>
@@ -118,30 +118,33 @@
       </div>
     </section>
 
-    <!-- EINBLICKE (Instagram, erst nach Zustimmung geladen) -->
+    <!-- EINBLICKE: eigene Fotos, führen zu Instagram -->
     <section class="section" id="einblicke">
       <p class="eyebrow reveal">Einblicke</p>
-      <h2 class="reveal">Aus dem Massageraum</h2>
-      <p class="muted reveal insta-lead">Kleine Eindrücke von Behandlungen, Kräuterstempeln und Ritualen – direkt von Instagram.</p>
+      <h2 class="reveal">Ein Blick in den Raum</h2>
+      <p class="muted reveal gallery-lead">So sieht es bei mir in 1220 Wien aus. Mehr Momente teile ich auf Instagram.</p>
 
-      <div class="insta-consent card reveal" id="instaConsent">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
-        <div>
-          <p><strong>Instagram-Beiträge anzeigen?</strong></p>
-          <p class="muted">Dabei werden Daten an Instagram (Meta) übertragen. Mehr in der <a href="/datenschutz">Datenschutzerklärung</a>.</p>
-          <label class="check"><input type="checkbox" id="instaRemember"> <span>Auf diesem Gerät merken</span></label>
+      <div class="gallery reveal">
+        <div class="gallery__track" id="galleryTrack">
+          <a class="gallery__item" href="https://www.instagram.com/tibetian_energybalancemassage/" target="_blank" rel="noopener">
+            <img src="/img/raum-behandlungsraum.webp" alt="Behandlungsraum mit Massageliege, Gebetsfahnen und Pflanzen" width="406" height="541" loading="lazy">
+            <span class="gallery__badge"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></span>
+            <span class="gallery__cap">Der Behandlungsraum</span>
+          </a>
+          <a class="gallery__item" href="https://www.instagram.com/tibetian_energybalancemassage/" target="_blank" rel="noopener">
+            <img src="/img/raum-kraeuterstempel.webp" alt="Kräuterstempel in einer Schale neben einem Handtuch und einer Orchidee" width="400" height="533" loading="lazy">
+            <span class="gallery__badge"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></span>
+            <span class="gallery__cap">Warme Kräuterstempel, für Sie vorbereitet</span>
+          </a>
+          <a class="gallery__item gallery__item--cta" href="https://www.instagram.com/tibetian_energybalancemassage/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            <span class="gallery__handle">@tibetian_energybalancemassage</span>
+            <strong>Mehr Einblicke auf Instagram</strong>
+            <span class="gallery__go" aria-hidden="true">→</span>
+          </a>
         </div>
-        <button class="btn btn--primary" type="button" id="instaLoad">Beiträge anzeigen</button>
+        <div class="gallery__dots" id="galleryDots" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
       </div>
-
-      <div class="insta-track" id="instaTrack" aria-label="Instagram-Beiträge">
-        <div class="insta-item" data-permalink="https://www.instagram.com/p/DPMYzn3DOlP/"><div class="insta-ph"><span>Beitrag</span></div></div>
-        <div class="insta-item" data-permalink="https://www.instagram.com/p/DPdoK7nDGnV/"><div class="insta-ph"><span>Beitrag</span></div></div>
-        <div class="insta-item" data-permalink="https://www.instagram.com/p/DP9OaaOCBIB/"><div class="insta-ph"><span>Beitrag</span></div></div>
-        <div class="insta-item" data-permalink="https://www.instagram.com/reel/DTYv6P0DBaG/"><div class="insta-ph"><span>Reel</span></div></div>
-      </div>
-
-      <a class="btn btn--ghost insta-more reveal" href="https://www.instagram.com/tibetian_energybalancemassage/" target="_blank" rel="noopener">Mehr auf Instagram ansehen</a>
     </section>
 
     <!-- KONTAKT -->
@@ -174,6 +177,6 @@
   </nav>
 
   <script src="/app.js" defer></script>
-  <script src="/instagram.js" defer></script>
+  <script src="/gallery.js" defer></script>
 </body>
 </html>

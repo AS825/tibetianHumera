@@ -1,8 +1,8 @@
 // Offline-Cache: Seiten zuerst aus dem Netz (damit Änderungen sofort sichtbar sind), Dateien aus dem Cache.
-const CACHE = 'balance-zeit-v6';
+const CACHE = 'balance-zeit-v7';
 const ASSETS = [
-  '/', '/gutschein', '/styles.css', '/app.js', '/instagram.js', '/manifest.webmanifest',
-  '/img/humera.webp', '/img/kraeuterstempel-massage-900.webp', '/icons/icon-192.png',
+  '/', '/gutschein', '/styles.css', '/app.js', '/gallery.js', '/manifest.webmanifest',
+  '/img/humera-namaste.webp', '/img/kraeuterstempel-massage-900.webp', '/icons/icon-192.png',
 ];
 
 self.addEventListener('install', (e) => {
