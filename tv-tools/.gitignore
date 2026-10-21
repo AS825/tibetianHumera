@@ -1,0 +1,5 @@
+# Per-TV data (package lists, backups, screenshots, logs) stays on your computer
+state/
+logs/
+platform-tools/
+downloads/

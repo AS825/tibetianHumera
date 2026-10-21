@@ -1,0 +1,8 @@
+# One package per line. Lines starting with # are ignored.
+# This file is filled in AFTER `./tv.sh scan` shows what is really on your TV,
+# and is applied only after you say OK. Everything here is DISABLED, never uninstalled.
+#
+# Generic Android TV items that are safe to disable on a Philips 2021 Android TV
+# (uncomment only the ones that `scan` reports as installed):
+# com.google.android.feedback          # "Send feedback" app
+# com.google.android.tvrecommendations # sponsored/recommended rows on the home screen
