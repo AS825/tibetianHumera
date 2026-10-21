@@ -5,7 +5,7 @@ These tools are for the TV in the photo: a **Philips 2021 Android TV**, platform
 That is Android TV, so ADB works. For the exact model number (for example 55OLED806/12), open
 Settings → About or look at the label on the back.
 
-Everything runs from your computer with `./tv.sh` (macOS or Linux; on Windows use Git Bash).
+Everything runs from your computer with `./tv.sh`. On **Windows** it runs in **Git Bash**, which comes with Git for Windows (see below). It also works on macOS and Linux.
 Every change is written to `state/undo.sh` *before* the next one happens, and `./tv.sh undo` reverts all of them.
 Nothing is uninstalled, nothing is rooted or flashed, and the scripts never type passwords or sign in.
 
@@ -25,10 +25,20 @@ German menu names first, English in brackets. The exact names can differ slightl
 
 ## 2. On the computer
 
+**Windows, one-time setup:**
+1. Install **Git for Windows** from the official site https://git-scm.com/download/win (default options). It includes Git Bash.
+2. Download this folder: `git clone -b claude/lucid-carson-bk9beq https://github.com/AS825/tibetianHumera.git`
+   (or download the branch as a ZIP from GitHub and unpack it).
+3. Start menu → **Git Bash**, then go to the folder, e.g. `cd ~/tibetianHumera`.
+4. The first time adb runs, Windows Firewall may ask about network access. Click **Allow** for **private networks**.
+   Your home Wi-Fi/LAN should be set to *Private* (Settings → Network & Internet → your network → Network profile type).
+
+Then, in Git Bash:
+
 ```bash
 cd tv-tools
-./tv.sh install-adb             # official Google platform-tools, only if adb is missing
-./tv.sh monitor                 # in a SECOND terminal: live log of every command + TV logcat
+./tv.sh install-adb             # official Google platform-tools (Windows/macOS/Linux), only if adb is missing
+./tv.sh monitor                 # in a SECOND Git Bash window: live log of every command + TV logcat
 ./tv.sh connect 192.168.1.57    # your TV's IP; then accept the prompt on the TV
 ./tv.sh backup                  # saves package lists, all settings and creates state/undo.sh
 ./tv.sh scan                    # lists every app, marks REVIEW candidates and protected ones
@@ -41,6 +51,7 @@ If `connect` is **refused**: on the TV open Developer options → Wireless debug
 ./tv.sh connect 192.168.1.57:41235         # IP:port shown on the main Wireless debugging screen
 ```
 
+On **Windows**, if the connection times out: the PC and TV must be on the same router (not a guest Wi-Fi), and the network profile should be *Private*.
 On **macOS**, "No route to host" usually means the terminal app has no Local Network access:
 System Settings → Privacy & Security → **Local Network** → turn on Terminal (or iTerm/VS Code), restart it, retry.
 

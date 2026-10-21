@@ -11,8 +11,12 @@ LOG="$LOGS/monitor.log"
 UNDO="$STATE/undo.sh"
 mkdir -p "$STATE" "$LOGS"
 
+# Windows (Git Bash): don't rewrite TV paths like /sdcard/... into C:/Program Files/Git/...
+export MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL='*'
+
 ADB="$HERE/platform-tools/adb"
-[ -x "$ADB" ] || ADB="$(command -v adb || true)"
+[ -x "$ADB" ] || ADB="$HERE/platform-tools/adb.exe"
+[ -x "$ADB" ] || ADB="$(command -v adb || command -v adb.exe || true)"
 TV="${TV:-$(cat "$STATE/tv.conf" 2>/dev/null || true)}"
 
 YT_PKG="com.google.android.youtube.tv"
@@ -35,7 +39,7 @@ need_adb() { [ -n "$ADB" ] && [ -x "$ADB" ] || die "adb not found. Run: ./tv.sh 
 need_tv() {
   need_adb
   [ -n "$TV" ] || die "no TV set. Run: ./tv.sh connect <TV-IP>"
-  local st; st="$("$ADB" -s "$TV" get-state 2>&1 || true)"
+  local st; st="$("$ADB" -s "$TV" get-state 2>&1 | tr -d '\r' || true)"
   case "$st" in
     device) ;;
     *unauthorized*) die "TV says 'unauthorized': accept the 'Allow USB debugging?' prompt on the TV (tick 'Always allow'), then retry." ;;
@@ -75,14 +79,17 @@ cmd_install_adb() {
   case "$(uname -s)" in
     Darwin) os=darwin ;;
     Linux) os=linux ;;
-    *) die "On Windows download https://dl.google.com/android/repository/platform-tools-latest-windows.zip and unzip it here." ;;
+    MINGW*|MSYS*|CYGWIN*) os=windows ;;
+    *) die "unsupported system $(uname -s)" ;;
   esac
   mkdir -p "$HERE/downloads"
   local zip="$HERE/downloads/platform-tools-latest-$os.zip"
   say "Downloading Android platform-tools from Google (dl.google.com)"
   curl -fL --proto '=https' -o "$zip" "https://dl.google.com/android/repository/platform-tools-latest-$os.zip"
-  unzip -q -o "$zip" -d "$HERE"
-  "$HERE/platform-tools/adb" version | head -2
+  if command -v unzip >/dev/null; then unzip -q -o "$zip" -d "$HERE"
+  else powershell.exe -NoProfile -Command "Expand-Archive -Force -LiteralPath '$(cygpath -w "$zip")' -DestinationPath '$(cygpath -w "$HERE")'"; fi
+  ADB="$HERE/platform-tools/adb"; [ -x "$ADB" ] || ADB="$HERE/platform-tools/adb.exe"
+  "$ADB" version | tr -d '\r' | head -2
 }
 
 cmd_connect() {
@@ -90,16 +97,16 @@ cmd_connect() {
   local target="${1:?usage: ./tv.sh connect <TV-IP>[:port]}"
   case "$target" in *:*) ;; *) target="$target:5555" ;; esac
   say "adb connect $target  (look at the TV: accept 'Allow debugging?' and tick 'Always allow')"
-  local out; out="$("$ADB" connect "$target" 2>&1 || true)"; echo "$out"
+  local out; out="$("$ADB" connect "$target" 2>&1 | tr -d '\r' || true)"; echo "$out"
   case "$out" in
     *"No route to host"*)
-      die "No route to host. On macOS: System Settings → Privacy & Security → Local Network → enable your terminal app, restart the terminal, retry. Also check the computer and TV are on the same network." ;;
+      die "No route to host. On Windows: check that the PC and TV are on the same network/router (not a guest Wi-Fi). On macOS: System Settings → Privacy & Security → Local Network → enable your terminal app, restart the terminal, retry. Also check the computer and TV are on the same network." ;;
     *refused*|*failed*|*"cannot connect"*)
       die "Connection refused. Use Wireless debugging pairing: on the TV open Developer options → Wireless debugging → 'Pair device with pairing code', then run: ./tv.sh pair <IP:PAIR-PORT> <CODE> and ./tv.sh connect <IP:PORT shown under Wireless debugging>" ;;
   esac
   local i st
   for i in $(seq 1 30); do
-    st="$("$ADB" -s "$target" get-state 2>&1 || true)"
+    st="$("$ADB" -s "$target" get-state 2>&1 | tr -d '\r' || true)"
     [ "$st" = device ] && break
     sleep 2
   done
